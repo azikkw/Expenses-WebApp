@@ -1,23 +1,23 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Expense } from './expenses/expense.entity';
+import { ExpensesModule } from './expenses/expenses.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mssql',
-      port: 1433,
-      username: 'yourusername',
-      password: 'yourpassword',
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
       database: 'expensesdb',
       entities: [Expense],
-      synchronize: true,
-      options: {
-        enableArithAbort: true,
-      },
-    })
+      synchronize: true
+    }),
+    ExpensesModule
   ],
   controllers: [AppController],
   providers: [AppService],
