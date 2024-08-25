@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import ExpenseCard from "../components/expense-card/ExpenseCard";
+import ExpenseCard from "../components/ExpenseCard";
 
 const ExpensesPage = () => {
 
     const [expenses, setExpenses] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        document.title = "Расходы | ExpDash"
+        document.title = "Расходы | ExpDash";
         getExpenses();
     }, []);
 
     const getExpenses = async () => {
-        const URL = 'http://localhost:4000/expenses';
-        return await fetch(URL, {
+        return await fetch('http://localhost:4000/expenses', {
             method: 'GET',
         }).then(response => response.json())
-        .then((data) => setExpenses(data))
+        .then((data) => {
+            setExpenses(data);
+            setLoading(false);
+        })
         .catch((error) => console.log(error));
     }
 
@@ -30,9 +33,13 @@ const ExpensesPage = () => {
         </div>
         <div className="expenses-list">
             {
-                expenses.map((expense, index) => (
-                    <ExpenseCard props={expense} index={index} key={index} />
-                ))
+                loading
+                ?
+                    <div className="loading">Loading...</div>
+                :
+                    expenses.sort((a, b) => b.dateTime - a.dateTime).map((expense, index) => (
+                        <ExpenseCard props={expense} index={index} key={index} />
+                    ))
             }
         </div>
     </div>;

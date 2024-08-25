@@ -13,7 +13,7 @@ export class ExpensesService {
     ) {}
     
     findAll(): Promise<Expense[]> {
-      return this.expensesRepository.find();
+      return this.expensesRepository.find({order: {dateTime: 'DESC'}});
     }
 
     create(createExpenseDto: CreateExpenseDto): Promise<Expense> {
