@@ -1,11 +1,6 @@
 .container {
     height: 100vh;
-    background: #2c2c42;
-    color: #fff;
     box-sizing: border-box;
-}
-.dashboard {
-    display: flex;
 }
 header {
     height: 85px;
@@ -13,23 +8,37 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 45px;
-    background: #222235;
+    background: #f6f6f6;
+}
+.header-left {
+    display: flex;
+    align-items: center;
 }
 .logo {
     font-size: 20px;
     font-weight: 500;
+    margin-right: 100px;
 }
 nav {
-    width: fit-content;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 45px;
+    gap: 25px;
 }
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+nav a {
+    color: #000;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    opacity: .8;
+}
+nav a.active {
+    font-weight: 600;
+    opacity: 1;
+}
+nav a img {
+    width: 25px;
 }
 /*.content {*/
 /*    flex: 1;*/

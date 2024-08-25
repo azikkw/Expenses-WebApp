@@ -1,28 +1,31 @@
 import React from "react";
 import './main-page.css';
 
-import { Link, Outlet } from "react-router-dom";
-// import {LogoGithub} from "react-ionicons";
+import { NavLink, Outlet } from "react-router-dom";
+
+import ExpensesIcon from "../../assets/expenses-icon.svg";
+import AddExpenseIcon from "../../assets/add-expense.svg";
 
 const Main = () => {
     return <div className="container">
         <header>
-            <div className="logo">ExpDash</div>
+            <div className="header-left">
+                <div className="logo">ExpDash</div>
+                <nav>
+                    <NavLink to='/' className={({isActive}) => (isActive ? 'active' : '')}>
+                        <img src={ExpensesIcon} alt="Expenses icon"/>Расходы
+                    </NavLink>
+                    <NavLink to='/add-expense' className={({isActive}) => (isActive ? 'active' : '')}>
+                        <img src={AddExpenseIcon} alt="Add expense icon"/>Добавить расход
+                    </NavLink>
+                </nav>
+            </div>
             <a href="https://github.com/azikkw" target="_blank" rel="noreferrer">
                 azikkw
             </a>
         </header>
-        <div className="dashboard">
-            <nav className="left-bar">
-                <span>МЕНЮ</span>
-                <ul>
-                    <li><Link to='/expenses'>Расходы</Link></li>
-                    <li><Link to='/add-expense'>Добавить расход</Link></li>
-                </ul>
-            </nav>
-            <div className="content">
-                <Outlet/>
-            </div>
+        <div className="content">
+            <Outlet/>
         </div>
     </div>
 };
