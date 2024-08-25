@@ -5,9 +5,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import MainPage from './pages/main-page/MainPage';
-import ExpensesPage from './pages/expenses-page/ExpensesPage';
-import AddExpensePage from './pages/add-expense-page/AddExpensePage';
+import MainPage from './pages/MainPage';
+import ExpensesPage from './pages/ExpensesPage';
+import AddExpensePage from './pages/AddExpensePage';
 
 const router = createBrowserRouter([
     {

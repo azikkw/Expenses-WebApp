@@ -1,16 +1,18 @@
 import React from "react";
-import './main-page.css';
+import "../assets/css/style.css";
 
 import { NavLink, Outlet } from "react-router-dom";
 
-import ExpensesIcon from "../../assets/expenses-icon.svg";
-import AddExpenseIcon from "../../assets/add-expense.svg";
+import ExpensesIcon from "../assets/icons/expenses-icon.svg";
+import AddExpenseIcon from "../assets/icons/add-expense.svg";
 
 const Main = () => {
-    return <div className="container">
+    return <div>
         <header>
             <div className="header-left">
-                <div className="logo">ExpDash</div>
+                <div className="logo">
+                    <img src="/logo.png" alt="Expenses icon"/>ExpDash
+                </div>
                 <nav>
                     <NavLink to='/' className={({isActive}) => (isActive ? 'active' : '')}>
                         <img src={ExpensesIcon} alt="Expenses icon"/>Расходы
